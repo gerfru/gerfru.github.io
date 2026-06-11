@@ -3,8 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gerald Fruhmann</title>
-  <meta name="description" content="AI Regulatory & Medical Device Compliance Consultant. MSc Biomedical Engineering. Based in Graz, Austria." />
+  <title>Gerald F. Fruhmann — AI, Compliance & Technology Consulting</title>
+  <meta name="description" content="Strategic guidance and hands-on implementation for AI integration, regulatory compliance, and technology modernization. Based in Graz, Austria." />
+  <link rel="canonical" href="https://gerfru.github.io/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Gerald F. Fruhmann — AI, Compliance & Technology Consulting" />
+  <meta property="og:description" content="Strategic guidance and hands-on implementation for AI integration, regulatory compliance, and technology modernization. Based in Graz, Austria." />
+  <meta property="og:url" content="https://gerfru.github.io/" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="de_AT" />
+  <meta property="og:image" content="https://gerfru.github.io/og_image_gerfru.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Gerald F. Fruhmann — AI, Compliance & Technology Consulting" />
+  <meta name="twitter:description" content="Strategic guidance and hands-on implementation for AI integration, regulatory compliance, and technology modernization. Based in Graz, Austria." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232563eb'/%3E%3Ctext x='32' y='41' font-family='-apple-system,BlinkMacSystemFont,sans-serif' font-size='28' font-weight='700' fill='white' text-anchor='middle'%3EGF%3C/text%3E%3C/svg%3E" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -30,6 +50,70 @@
 
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
+
+    /* ── Language Toggle ─────────────────────────────── */
+    html[lang="en"] [lang="de"] { display: none; }
+    html[lang="de"] [lang="en"] { display: none; }
+
+    .lang-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-left: 16px;
+    }
+
+    .lang-toggle button {
+      background: none;
+      border: none;
+      padding: 4px 10px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--muted);
+      transition: background 0.15s, color 0.15s;
+      font-family: inherit;
+    }
+
+    .lang-toggle button.active {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .lang-toggle button:hover:not(.active) {
+      background: var(--bg-soft);
+      color: var(--text);
+    }
+
+    /* ── Accessibility ────────────────────────────────── */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 16px;
+      padding: 8px 16px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: var(--radius);
+      font-size: 0.85rem;
+      font-weight: 500;
+      z-index: 100;
+      transition: top 0.15s;
+    }
+
+    .skip-link:focus {
+      top: 8px;
+      text-decoration: none;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
 
     /* ── Layout ─────────────────────────────────────── */
     .container {
@@ -64,6 +148,12 @@
       color: var(--text);
     }
 
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+
     .nav-links {
       display: flex;
       gap: 24px;
@@ -79,6 +169,24 @@
 
     /* ── Hero ─────────────────────────────────────────── */
     #about { padding-top: 80px; padding-bottom: 72px; }
+
+    .hero-layout {
+      display: flex;
+      align-items: flex-start;
+      gap: 48px;
+    }
+
+    .hero-text { flex: 1; min-width: 0; }
+
+    .hero-portrait {
+      flex-shrink: 0;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center 15%;
+      border: 3px solid var(--border);
+    }
 
     .hero-tag {
       display: inline-block;
@@ -101,14 +209,15 @@
     .hero-sub {
       font-size: 1.1rem;
       color: var(--muted);
-      max-width: 580px;
-      margin-bottom: 32px;
+      max-width: 620px;
+      margin-bottom: 20px;
     }
 
     .hero-actions {
       display: flex;
       gap: 12px;
       flex-wrap: wrap;
+      margin-top: 32px;
     }
 
     .btn {
@@ -119,20 +228,31 @@
       border-radius: var(--radius);
       font-size: 0.9rem;
       font-weight: 500;
-      transition: opacity 0.15s;
     }
 
-    .btn:hover { opacity: 0.85; text-decoration: none; }
+    .btn:hover { text-decoration: none; }
 
     .btn-primary {
       background: var(--accent);
       color: #fff;
+      transition: background 0.15s, transform 0.15s;
+    }
+
+    .btn-primary:hover {
+      background: #1d4ed8;
+      transform: translateY(-1px);
     }
 
     .btn-ghost {
       background: var(--bg-soft);
       color: var(--text);
       border: 1px solid var(--border);
+      transition: border-color 0.15s, transform 0.15s;
+    }
+
+    .btn-ghost:hover {
+      border-color: #aaa;
+      transform: translateY(-1px);
     }
 
     /* ── Section headings ────────────────────────────── */
@@ -141,7 +261,7 @@
       font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--accent);
       margin-bottom: 32px;
     }
 
@@ -192,12 +312,13 @@
       border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 20px 22px;
-      transition: border-color 0.15s, box-shadow 0.15s;
+      transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
     }
 
     .project-card:hover {
       border-color: #bbb;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transform: translateY(-2px);
     }
 
     .project-name {
@@ -277,8 +398,33 @@
 
     footer p { font-size: 0.8rem; color: var(--muted); }
 
+    /* ── Animations ───────────────────────────────────── */
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      opacity: 0;
+      animation: fade-up 0.5s ease forwards;
+    }
+
+    .fade-in:nth-child(1) { animation-delay: 0s; }
+    .fade-in:nth-child(2) { animation-delay: 0.08s; }
+    .fade-in:nth-child(3) { animation-delay: 0.16s; }
+    .fade-in:nth-child(4) { animation-delay: 0.24s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .fade-in {
+        opacity: 1;
+        animation: none;
+      }
+    }
+
     /* ── Responsive ───────────────────────────────────── */
     @media (max-width: 600px) {
+      .hero-layout { flex-direction: column-reverse; align-items: center; gap: 32px; }
+      .hero-portrait { width: 140px; height: 140px; }
       .skill-row { grid-template-columns: 1fr; gap: 8px; }
       .exp-item  { grid-template-columns: 1fr; }
       .exp-date  { text-align: left; }
@@ -289,35 +435,73 @@
 </head>
 <body>
 
-  <nav>
+  <a class="skip-link" href="#about">Skip to content</a>
+
+  <nav role="navigation" aria-label="Main navigation">
     <div class="container">
-      <span class="nav-name">Gerald Fruhmann</span>
-      <ul class="nav-links">
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+      <span class="nav-name">Gerald F. Fruhmann</span>
+      <div class="nav-right">
+        <ul class="nav-links">
+          <li><a href="#skills" lang="en">Skills</a><a href="#skills" lang="de">Kompetenzen</a></li>
+          <li><a href="#experience" lang="en">Experience</a><a href="#experience" lang="de">Erfahrung</a></li>
+          <li><a href="#projects" lang="en">Projects</a><a href="#projects" lang="de">Projekte</a></li>
+          <li><a href="#contact" lang="en">Contact</a><a href="#contact" lang="de">Kontakt</a></li>
+        </ul>
+        <div class="lang-toggle" role="group" aria-label="Language">
+          <button data-lang="en" class="active" aria-pressed="true">EN</button>
+          <button data-lang="de" aria-pressed="false">DE</button>
+        </div>
+      </div>
     </div>
   </nav>
 
   <!-- ── Hero ── -->
   <section id="about">
     <div class="container">
-      <span class="hero-tag">AI &amp; MedTech Compliance · Graz, Austria</span>
-      <h1>Gerald Fruhmann</h1>
-      <p class="hero-sub">
-        Independent consultant at the intersection of AI regulation and medical devices.
-        MSc Biomedical Engineering — helping MedTech companies navigate EU AI Act, MDR/IVDR,
-        and ISO 13485 with a hands-on, engineering-first approach.
-      </p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#contact">Get in touch</a>
+      <div class="hero-layout">
+        <div class="hero-text">
+          <span class="hero-tag"><span lang="en">AI · Compliance · Technology Consulting · Graz, Austria</span><span lang="de">AI · Compliance · Technologieberatung · Graz, Österreich</span></span>
+          <h1>Gerald F. Fruhmann</h1>
+
+          <div lang="en">
+            <p class="hero-sub">
+              Technology changes fast — but adopting it shouldn't mean guesswork.
+              Whether it's AI integration, regulatory certification, or modernizing
+              your tech stack, I help businesses turn complexity into clarity.
+            </p>
+            <p class="hero-sub">
+              With 10+ years across MedTech compliance, business intelligence, and
+              regulated industries, I deliver strategy, implementation, and workshops —
+              from the first concept to the running solution.
+            </p>
+          </div>
+
+          <div lang="de">
+            <p class="hero-sub">
+              Technologie entwickelt sich schnell — aber sie einzusetzen sollte kein
+              Ratespiel sein. Ob AI-Einführung, regulatorische Zertifizierung oder
+              technische Modernisierung: Ich helfe Unternehmen, Komplexität in
+              Klarheit zu verwandeln.
+            </p>
+            <p class="hero-sub">
+              Mit über 10 Jahren Erfahrung in MedTech-Compliance, Business Intelligence
+              und regulierten Branchen liefere ich Strategie, Umsetzung und Workshops —
+              vom ersten Konzept bis zur laufenden Lösung.
+            </p>
+          </div>
+
+          <div class="hero-actions">
+        <a class="btn btn-primary" href="#contact">
+          <span lang="en">Let's talk about your project</span>
+          <span lang="de">Sprechen wir über Ihr Projekt</span>
+        </a>
         <a class="btn btn-ghost" href="https://github.com/gerfru" target="_blank" rel="noopener">
-          <!-- octicon github -->
           <svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
           GitHub
         </a>
+      </div>
+        </div>
+        <img class="hero-portrait" src="portrait.jpg" alt="Gerald F. Fruhmann" width="180" height="180" />
       </div>
     </div>
   </section>
@@ -325,47 +509,131 @@
   <!-- ── Skills ── -->
   <section id="skills">
     <div class="container">
-      <p class="section-label">Core Competencies</p>
+      <p class="section-label">
+        <span lang="en">Solutions</span>
+        <span lang="de">Lösungen</span>
+      </p>
       <div class="skills-grid">
         <div class="skill-row">
-          <span class="skill-label">Quality &amp; Regulatory</span>
+          <span class="skill-label">
+            <span lang="en">Navigating regulations</span>
+            <span lang="de">Regulatorik navigieren</span>
+          </span>
           <div class="skill-tags">
             <span class="tag">EU AI Act</span>
-            <span class="tag">MDR / IVDR</span>
-            <span class="tag">ISO 13485</span>
-            <span class="tag">ISO 9001</span>
-            <span class="tag">ISO 14971</span>
-            <span class="tag">FDA 510(k)</span>
-            <span class="tag">MDSAP</span>
+            <span class="tag">MedTech (MDR / IVDR / FDA)</span>
+            <span class="tag"><span lang="en">GDPR &amp; Data Protection</span><span lang="de">DSGVO &amp; Datenschutz</span></span>
+            <span class="tag"><span lang="en">QMS &amp; Certification</span><span lang="de">QMS &amp; Zertifizierung</span></span>
+            <span class="tag"><span lang="en">Risk Management</span><span lang="de">Risikomanagement</span></span>
+            <span class="tag"><span lang="en">Technical Documentation</span><span lang="de">Technische Dokumentation</span></span>
           </div>
         </div>
         <div class="skill-row">
-          <span class="skill-label">Product Development</span>
+          <span class="skill-label">
+            <span lang="en">Building &amp; integrating AI</span>
+            <span lang="de">AI aufbauen &amp; integrieren</span>
+          </span>
           <div class="skill-tags">
-            <span class="tag">Requirements Engineering</span>
-            <span class="tag">Usability Engineering (IEC 62366)</span>
-            <span class="tag">Design Controls</span>
-            <span class="tag">V&amp;V</span>
+            <span class="tag"><span lang="en">AI Strategy &amp; Integration</span><span lang="de">AI-Strategie &amp; Integration</span></span>
+            <span class="tag">RAG Platforms</span>
+            <span class="tag">AI Agents</span>
+            <span class="tag"><span lang="en">Data-Sovereign Solutions</span><span lang="de">Datensouveräne Lösungen</span></span>
+            <span class="tag"><span lang="en">Process Automation</span><span lang="de">Prozessautomatisierung</span></span>
+            <span class="tag"><span lang="en">Cost &amp; Impact Modeling</span><span lang="de">Kosten- &amp; Impact-Modelle</span></span>
           </div>
         </div>
         <div class="skill-row">
-          <span class="skill-label">Project Management</span>
-          <div class="skill-tags">
-            <span class="tag">Agile</span>
-            <span class="tag">Waterfall</span>
-            <span class="tag">Stakeholder Management</span>
-            <span class="tag">Cross-functional Teams</span>
-          </div>
-        </div>
-        <div class="skill-row">
-          <span class="skill-label">Technical</span>
+          <span class="skill-label">
+            <span lang="en">Tools I work with</span>
+            <span lang="de">Meine Werkzeuge</span>
+          </span>
           <div class="skill-tags">
             <span class="tag">Python</span>
+            <span class="tag">JavaScript</span>
             <span class="tag">SQL</span>
             <span class="tag">Docker</span>
             <span class="tag">FastAPI</span>
-            <span class="tag">Process Automation</span>
+            <span class="tag">Microsoft 365</span>
+            <span class="tag">GitHub</span>
             <span class="tag">JIRA / Confluence</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Experience ── -->
+  <section id="experience">
+    <div class="container">
+      <p class="section-label">
+        <span lang="en">Experience</span>
+        <span lang="de">Erfahrung</span>
+      </p>
+      <div class="exp-list">
+
+        <div class="exp-item">
+          <div>
+            <div class="exp-role"><span lang="en">Independent Consulting &amp; Projects</span><span lang="de">Selbstständige Beratung &amp; Projekte</span></div>
+            <div class="exp-org"><span lang="en">AI integration, regulatory consulting, and technical solutions for SMEs — built alongside full-time roles, now my primary focus. Delivered transcription and scheduling tools for medical practices, a RAG-based contract analysis platform for a legal firm, and custom web solutions.</span><span lang="de">AI-Integration, regulatorische Beratung und technische Lösungen für KMUs — parallel zu Festanstellungen aufgebaut, jetzt mein Hauptfokus. Transkriptions- und Terminplanungs-Tools für Arztpraxen, eine RAG-basierte Vertragsanalyse-Plattform für eine Kanzlei und individuelle Web-Lösungen umgesetzt.</span></div>
+          </div>
+          <div class="exp-date">2017 – <span lang="en">present</span><span lang="de">heute</span></div>
+        </div>
+
+        <div class="exp-item">
+          <div>
+            <div class="exp-role">Business Intelligence Quality Manager</div>
+            <div class="exp-org"><span lang="en">Dedalus Healthcare GmbH · Graz, Austria — Streamlined delivery processes and supported 100+ customer deployments across clinical software products.</span><span lang="de">Dedalus Healthcare GmbH · Graz — Delivery-Prozesse optimiert und über 100 Kundeninstallationen klinischer Softwareprodukte begleitet.</span></div>
+          </div>
+          <div class="exp-date">2021 – 2025</div>
+        </div>
+
+        <div class="exp-item">
+          <div>
+            <div class="exp-role">Project Manager / Product Manager</div>
+            <div class="exp-org"><span lang="en">CNSystems Medizintechnik GmbH · Graz, Austria — Owned two medical devices end-to-end: stakeholder analysis, requirements engineering, technology stack, development coordination, and regulatory clearance (MDR Class IIa/IIb, FDA 510(k)).</span><span lang="de">CNSystems Medizintechnik GmbH · Graz — Zwei Medizinprodukte Ende-zu-Ende verantwortet: Stakeholder-Analyse, Requirements Engineering, Technologie-Stack, Entwicklungskoordination und regulatorische Zulassung (MDR Klasse IIa/IIb, FDA 510(k)).</span></div>
+          </div>
+          <div class="exp-date">2017 – 2021</div>
+        </div>
+
+        <div class="exp-item">
+          <div>
+            <div class="exp-role">Software Process &amp; Quality Assurance</div>
+            <div class="exp-org"><span lang="en">AVL List GmbH · Graz, Austria — Tool owner for JIRA &amp; Confluence across engineering teams.</span><span lang="de">AVL List GmbH · Graz — Tool-Verantwortlicher für JIRA &amp; Confluence über Engineering-Teams hinweg.</span></div>
+          </div>
+          <div class="exp-date">2015 – 2017</div>
+        </div>
+
+        <div class="exp-item">
+          <div>
+            <div class="exp-role"><span lang="en">Student Employee — Strategic Procurement</span><span lang="de">Werkstudent — Strategischer Einkauf</span></div>
+            <div class="exp-org"><span lang="en">Siemens AG Austria · Graz — Built cross-team BI solutions and automated scorecard reporting for strategic procurement.</span><span lang="de">Siemens AG Austria · Graz — Team- und bereichsübergreifende BI-Lösungen und automatisiertes Scorecard-Reporting für den strategischen Einkauf erstellt.</span></div>
+          </div>
+          <div class="exp-date">2012 – 2014</div>
+        </div>
+
+      </div>
+      <p style="color: var(--muted); margin-top: 24px; font-size: 0.85rem;">
+        <span lang="en">References and project details available on request.</span>
+        <span lang="de">Referenzen und Projektdetails gerne auf Anfrage.</span>
+      </p>
+
+      <div style="margin-top: 40px;">
+        <p class="section-label">
+          <span lang="en">Education</span>
+          <span lang="de">Ausbildung</span>
+        </p>
+        <div class="exp-list">
+          <div class="exp-item">
+            <div>
+              <div class="exp-role">MSc Biomedical Engineering</div>
+              <div class="exp-org">Graz University of Technology · Health Care Engineering</div>
+            </div>
+          </div>
+          <div class="exp-item">
+            <div>
+              <div class="exp-role">BSc Biomedical Engineering</div>
+              <div class="exp-org">Graz University of Technology</div>
+            </div>
           </div>
         </div>
       </div>
@@ -375,103 +643,52 @@
   <!-- ── Projects ── -->
   <section id="projects">
     <div class="container">
-      <p class="section-label">Open Source Projects</p>
+      <p class="section-label">
+        <span lang="en">Open Source Projects</span>
+        <span lang="de">Open-Source-Projekte</span>
+      </p>
+      <p style="color: var(--muted); margin-bottom: 28px; font-size: 0.92rem; max-width: 620px;">
+        <span lang="en">A small selection of personal projects — they reflect how I think about technology: privacy-first, self-hosted, and built to solve real problems.</span>
+        <span lang="de">Eine kleine Auswahl persönlicher Projekte — sie zeigen, wie ich über Technologie denke: Privacy-first, self-hosted und gebaut, um echte Probleme zu lösen.</span>
+      </p>
       <div class="projects-grid">
 
-        <div class="project-card">
+        <div class="project-card fade-in">
           <div class="project-name">
             <svg height="14" width="14" viewBox="0 0 16 16" fill="#666"><path d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 010-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8z"/></svg>
             <a href="https://github.com/gerfru/PulseBase" target="_blank" rel="noopener">PulseBase</a>
           </div>
-          <p class="project-desc">Privacy-first, self-hosted health dashboard that turns Garmin &amp; Libre data into ML-grade insights. FastAPI · TimescaleDB · scikit-learn · Docker. GDPR-compliant.</p>
+          <p class="project-desc" lang="en">Privacy-first, self-hosted health dashboard that turns Garmin &amp; Libre data into ML-grade insights. FastAPI · TimescaleDB · scikit-learn · Docker. GDPR-compliant.</p>
+          <p class="project-desc" lang="de">Datenschutzorientiertes, selbst gehostetes Health-Dashboard, das Garmin- &amp; Libre-Daten in ML-Insights verwandelt. FastAPI · TimescaleDB · scikit-learn · Docker. DSGVO-konform.</p>
         </div>
 
-        <div class="project-card">
+        <div class="project-card fade-in">
           <div class="project-name">
             <svg height="14" width="14" viewBox="0 0 16 16" fill="#666"><path d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 010-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8z"/></svg>
             <a href="https://github.com/gerfru/homelab-gateway" target="_blank" rel="noopener">homelab-gateway</a>
           </div>
-          <p class="project-desc">Self-hosted reverse proxy, DNS, and full observability stack for Tailscale homelabs — CoreDNS, Caddy, Grafana, Prometheus, Loki, Tempo in a single Docker Compose.</p>
+          <p class="project-desc" lang="en">Self-hosted reverse proxy, DNS, and full observability stack for Tailscale homelabs — CoreDNS, Caddy, Grafana, Prometheus, Loki, Tempo in a single Docker Compose.</p>
+          <p class="project-desc" lang="de">Selbst gehosteter Reverse-Proxy, DNS und vollständiger Observability-Stack für Tailscale-Homelabs — CoreDNS, Caddy, Grafana, Prometheus, Loki, Tempo in einem Docker Compose.</p>
         </div>
 
-        <div class="project-card">
+        <div class="project-card fade-in">
           <div class="project-name">
             <svg height="14" width="14" viewBox="0 0 16 16" fill="#666"><path d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 010-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8z"/></svg>
             <a href="https://github.com/gerfru/NilesAI" target="_blank" rel="noopener">NilesAI</a>
           </div>
-          <p class="project-desc">Personal local-only AI agent — private assistant running entirely on-device with no data leaving the machine.</p>
+          <p class="project-desc" lang="en">Personal local-only AI agent — private assistant running entirely on-device with no data leaving the machine.</p>
+          <p class="project-desc" lang="de">Persönlicher, lokaler AI-Agent — privater Assistent, der vollständig auf dem eigenen Gerät läuft, ohne dass Daten das Gerät verlassen.</p>
         </div>
 
-        <div class="project-card">
+        <div class="project-card fade-in">
           <div class="project-name">
             <svg height="14" width="14" viewBox="0 0 16 16" fill="#666"><path d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 010-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8z"/></svg>
             <a href="https://github.com/gerfru/dev-best-practices" target="_blank" rel="noopener">dev-best-practices</a>
           </div>
-          <p class="project-desc">Opinionated engineering standards and Claude Code skill definitions for consistent, secure software delivery.</p>
+          <p class="project-desc" lang="en">Opinionated engineering standards and Claude Code skill definitions for consistent, secure software delivery.</p>
+          <p class="project-desc" lang="de">Klare Engineering-Standards und Claude-Code-Skill-Definitionen für konsistente, sichere Softwareentwicklung.</p>
         </div>
 
-      </div>
-    </div>
-  </section>
-
-  <!-- ── Experience ── -->
-  <section id="experience">
-    <div class="container">
-      <p class="section-label">Experience</p>
-      <div class="exp-list">
-
-        <div class="exp-item">
-          <div>
-            <div class="exp-role">Independent Consultant</div>
-            <div class="exp-org">AI Regulatory &amp; Medical Device Compliance · Graz, Austria</div>
-          </div>
-          <div class="exp-date">2025 – present</div>
-        </div>
-
-        <div class="exp-item">
-          <div>
-            <div class="exp-role">Business Intelligence Quality Manager</div>
-            <div class="exp-org">Dedalus Healthcare GmbH · Graz, Austria</div>
-          </div>
-          <div class="exp-date">2021 – 2025</div>
-        </div>
-
-        <div class="exp-item">
-          <div>
-            <div class="exp-role">Project Manager / Product Manager</div>
-            <div class="exp-org">CNSystems Medizintechnik GmbH · Graz, Austria</div>
-          </div>
-          <div class="exp-date">2017 – 2021</div>
-        </div>
-
-        <div class="exp-item">
-          <div>
-            <div class="exp-role">Software Process &amp; Quality Assurance</div>
-            <div class="exp-org">AVL List GmbH · Graz, Austria</div>
-          </div>
-          <div class="exp-date">2015 – 2017</div>
-        </div>
-
-      </div>
-
-      <div style="margin-top: 40px;">
-        <p class="section-label">Education</p>
-        <div class="exp-list">
-          <div class="exp-item">
-            <div>
-              <div class="exp-role">MSc Biomedical Engineering</div>
-              <div class="exp-org">Graz University of Technology · Health Care Engineering</div>
-            </div>
-            <div class="exp-date">2015 – 2024</div>
-          </div>
-          <div class="exp-item">
-            <div>
-              <div class="exp-role">BSc Biomedical Engineering</div>
-              <div class="exp-org">Graz University of Technology</div>
-            </div>
-            <div class="exp-date">2009 – 2015</div>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -479,22 +696,26 @@
   <!-- ── Contact ── -->
   <section id="contact">
     <div class="container">
-      <p class="section-label">Contact</p>
+      <p class="section-label">
+        <span lang="en">Contact</span>
+        <span lang="de">Kontakt</span>
+      </p>
       <p style="color: var(--muted); margin-bottom: 24px; font-size: 0.95rem;">
-        Open to consulting engagements in AI regulation, MedTech compliance, and quality management.
+        <span lang="en">Have a project in mind or just want to explore what's possible? Every engagement is tailored to the project scope and your company's needs. Book a free 30-minute intro call — no strings attached.</span>
+        <span lang="de">Ein Projekt im Kopf oder einfach ausloten, was möglich ist? Jede Zusammenarbeit wird individuell auf Projektumfang und Unternehmensgröße zugeschnitten. Buchen Sie ein kostenloses 30-Minuten-Erstgespräch — unverbindlich.</span>
       </p>
       <div class="contact-links">
-        <a class="contact-link" href="mailto:geraldfruhmann@mailbox.org">
+        <a class="contact-link" href="mailto:gerald@frhmnn.eu">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0114.25 14H1.75A1.75 1.75 0 010 12.25v-8.5C0 2.784.784 2 1.75 2zM1.5 4.307v7.943c0 .138.112.25.25.25h12.5a.25.25 0 00.25-.25V4.307L8.682 8.97a1 1 0 01-1.364 0L1.5 4.307zM14.357 3.5H1.643L8 8.432 14.357 3.5z"/></svg>
-          geraldfruhmann@mailbox.org
+          gerald@frhmnn.eu
         </a>
         <a class="contact-link" href="https://github.com/gerfru" target="_blank" rel="noopener">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
           github.com/gerfru
         </a>
-        <a class="contact-link" href="https://github.com/gerfru/cv" target="_blank" rel="noopener">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 010-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8z"/></svg>
-          Full CV
+        <a class="contact-link" href="https://www.linkedin.com/in/gerald-fruhmann-3b169493/" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M13.632 13.635h-2.37V9.922c0-.886-.018-2.025-1.234-2.025-1.235 0-1.424.964-1.424 1.96v3.778H6.234V6.001h2.275v1.044h.032c.317-.6 1.09-1.233 2.245-1.233 2.401 0 2.845 1.58 2.845 3.637v4.186zM3.558 4.955a1.376 1.376 0 110-2.752 1.376 1.376 0 010 2.752zm1.188 8.68H2.37V6.001h2.376v7.634zM14.816 0H1.182C.528 0 0 .516 0 1.153v13.694C0 15.484.528 16 1.182 16h13.634c.654 0 1.184-.516 1.184-1.153V1.153C16 .516 15.47 0 14.816 0z"/></svg>
+          LinkedIn
         </a>
       </div>
     </div>
@@ -502,10 +723,35 @@
 
   <footer>
     <div class="container">
-      <p>Gerald Fruhmann · Graz, Austria</p>
-      <p>"What you wish to ignite in others must burn within yourself first."</p>
+      <p>Gerald F. Fruhmann · Graz, Austria</p>
+      <p lang="en">"Never tell me the odds." — Han Solo</p>
+      <p lang="de">„Sag mir niemals wie meine Chancen stehen." — Han Solo</p>
     </div>
   </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var saved = localStorage.getItem('lang');
+      var browser = navigator.language.startsWith('de') ? 'de' : 'en';
+      var lang = saved || browser;
+
+      function setLang(l) {
+        document.documentElement.lang = l;
+        localStorage.setItem('lang', l);
+        document.querySelectorAll('.lang-toggle button').forEach(function(btn) {
+          var isActive = btn.dataset.lang === l;
+          btn.classList.toggle('active', isActive);
+          btn.setAttribute('aria-pressed', isActive);
+        });
+      }
+
+      setLang(lang);
+
+      document.querySelector('.lang-toggle').addEventListener('click', function(e) {
+        if (e.target.dataset.lang) setLang(e.target.dataset.lang);
+      });
+    });
+  </script>
 
 </body>
 </html>
