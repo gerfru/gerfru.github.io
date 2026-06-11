@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gerald Fruhmann</title>
+  <meta name="description" content="AI Regulatory & Medical Device Compliance Consultant. MSc Biomedical Engineering. Based in Graz, Austria." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --text:    #1a1a1a;
+      --muted:   #666;
+      --border:  #e5e5e5;
+      --bg:      #ffffff;
+      --bg-soft: #f8f8f8;
+      --accent:  #2563eb;
+      --radius:  6px;
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Layout ─────────────────────────────────────── */
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section { padding: 64px 0; }
+    section + section { border-top: 1px solid var(--border); }
+
+    /* ── Nav ─────────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 52px;
+    }
+
+    .nav-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+    /* ── Hero ─────────────────────────────────────────── */
+    #about { padding-top: 80px; padding-bottom: 72px; }
+
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 580px;
+      margin-bottom: 32px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 20px;
+      border-radius: var(--radius);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: opacity 0.15s;
+    }
+
+    .btn:hover { opacity: 0.85; text-decoration: none; }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-ghost {
+      background: var(--bg-soft);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    /* ── Section headings ────────────────────────────── */
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    /* ── Skills ──────────────────────────────────────── */
+    .skills-grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .skill-row {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .skill-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      padding-top: 2px;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 3px 9px;
+      font-size: 0.8rem;
+      color: var(--text);
+    }
+
+    /* ── Projects ─────────────────────────────────────── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 16px;
+    }
+
+    .project-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 22px;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+
+    .project-card:hover {
+      border-color: #bbb;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .project-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .project-name a { color: var(--text); }
+    .project-name a:hover { color: var(--accent); text-decoration: none; }
+
+    .project-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ── Experience ───────────────────────────────────── */
+    .exp-list { display: grid; gap: 28px; }
+
+    .exp-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 4px 16px;
+    }
+
+    .exp-role { font-weight: 600; font-size: 0.95rem; }
+    .exp-org  { font-size: 0.85rem; color: var(--muted); }
+    .exp-date {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    /* ── Contact ──────────────────────────────────────── */
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      color: var(--text);
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      transition: border-color 0.15s;
+    }
+
+    .contact-link:hover {
+      border-color: #aaa;
+      text-decoration: none;
+    }
+
+    /* ── Footer ───────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0;
+    }
+
+    footer .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    footer p { font-size: 0.8rem; color: var(--muted); }
+
+    /* ── Responsive ───────────────────────────────────── */
+    @media (max-width: 600px) {
+      .skill-row { grid-template-columns: 1fr; gap: 8px; }
+      .exp-item  { grid-template-columns: 1fr; }
+      .exp-date  { text-align: left; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .nav-links { gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="container">
+      <span class="nav-name">Gerald Fruhmann</span>
+      <ul class="nav-links">
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <section id="about">
+    <div class="container">
+      <span class="hero-tag">AI &amp; MedTech Compliance · Graz, Austria</span>
+      <h1>Gerald Fruhmann</h1>
+      <p class="hero-sub">
+        Independent consultant at the intersection of AI regulation and medical devices.
+        MSc Biomedical Engineering — helping MedTech companies navigate EU AI Act, MDR/IVDR,
+        and ISO 13485 with a hands-on, engineering-first approach.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#contact">Get in touch</a>
+        <a class="btn btn-ghost" href="https://github.com/gerfru" target="_blank" rel="noopener">
+          <!-- octicon github -->
+          <svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Skills ── -->
+  <section id="skills">
+    <div class="container">
+      <p class="section-label">Core Competencies</p>
+      <div class="skills-grid">
+        <div class="skill-row">
+          <span class="skill-label">Quality &amp; Regulatory</span>
+          <div class="skill-tags">
+            <span class="tag">EU AI Act</span>
+            <span class="tag">MDR / IVDR</span>
+            <span class="tag">ISO 13485</span>
+            <span class="tag">ISO 9001</span>
+            <span class="tag">ISO 14971</span>
+            <span class="tag">FDA 510(k)</span>
+            <span class="tag">MDSAP</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-label">Product Development</span>
+          <div class="skill-tags">
+            <span class="tag">Requirements Engineering</span>
+            <span class="tag">Usability Engineering (IEC 62366)</span>
+            <span class="tag">Design Controls</span>
+            <span class="tag">V&amp;V</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-label">Project Management</span>
+          <div class="skill-tags">
+            <span class="tag">Agile</span>
+            <span class="tag">Waterfall</span>
+            <span class="tag">Stakeholder Management</span>
+            <span class="tag">Cross-functional Teams</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-label">Technical</span>
+          <div class="skill-tags">
+            <span class="tag">Python</span>
+            <span class="tag">SQL</span>
+            <span class="tag">Docker</span>
+            <span class="tag">FastAPI</span>
+            <span class="tag">Process Automation</span>
+            <span class="tag">JIRA / Confluence</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Projects ── -->
+  <section id="projects">
+    <div class="container">
+      <p class="section-label">Open Source Projects</p>
+      <div class="projects-grid">
+
+        <div class="project-card">
+          <div class="project-name">
+            <svg height="14" width="14" viewBox="0 0 16 16" fill="#666"><path d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 010-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8z"/></svg>
+            <a href="https://github.com/gerfru/PulseBase" target="_blank" rel="noopener">PulseBase</a>
+          </div>
+          <p class="project-desc">Privacy-first, self-hosted health dashboard that turns Garmin &amp; Libre data into ML-grade insights. FastAPI · TimescaleDB · scikit-learn · Docker. GDPR-compliant.</p>
+        </div>
+
+        <div class="project-card">
+          <div class="project-name">
+            <svg height="14" width="14" viewBox="0 0 16 16" fill="#666"><path d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 010-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8z"/></svg>
+            <a href="https://github.com/gerfru/homelab-gateway" target="_blank" rel="noopener">homelab-gateway</a>
+          </div>
+          <p class="project-desc">Self-hosted reverse proxy, DNS, and full observability stack for Tailscale homelabs — CoreDNS, Caddy, Grafana, Prometheus, Loki, Tempo in a single Docker Compose.</p>
+        </div>
+
+        <div class="project-card">
+          <div class="project-name">
+            <svg height="14" width="14" viewBox="0 0 16 16" fill="#666"><path d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 010-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8z"/></svg>
+            <a href="https://github.com/gerfru/NilesAI" target="_blank" rel="noopener">NilesAI</a>
+          </div>
+          <p class="project-desc">Personal local-only AI agent — private assistant running entirely on-device with no data leaving the machine.</p>
+        </div>
+
+        <div class="project-card">
+          <div class="project-name">
+            <svg height="14" width="14" viewBox="0 0 16 16" fill="#666"><path d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 010-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8z"/></svg>
+            <a href="https://github.com/gerfru/dev-best-practices" target="_blank" rel="noopener">dev-best-practices</a>
+          </div>
+          <p class="project-desc">Opinionated engineering standards and Claude Code skill definitions for consistent, secure software delivery.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Experience ── -->
+  <section id="experience">
+    <div class="container">
+      <p class="section-label">Experience</p>
+      <div class="exp-list">
+
+        <div class="exp-item">
+          <div>
+            <div class="exp-role">Independent Consultant</div>
+            <div class="exp-org">AI Regulatory &amp; Medical Device Compliance · Graz, Austria</div>
+          </div>
+          <div class="exp-date">2025 – present</div>
+        </div>
+
+        <div class="exp-item">
+          <div>
+            <div class="exp-role">Business Intelligence Quality Manager</div>
+            <div class="exp-org">Dedalus Healthcare GmbH · Graz, Austria</div>
+          </div>
+          <div class="exp-date">2021 – 2025</div>
+        </div>
+
+        <div class="exp-item">
+          <div>
+            <div class="exp-role">Project Manager / Product Manager</div>
+            <div class="exp-org">CNSystems Medizintechnik GmbH · Graz, Austria</div>
+          </div>
+          <div class="exp-date">2017 – 2021</div>
+        </div>
+
+        <div class="exp-item">
+          <div>
+            <div class="exp-role">Software Process &amp; Quality Assurance</div>
+            <div class="exp-org">AVL List GmbH · Graz, Austria</div>
+          </div>
+          <div class="exp-date">2015 – 2017</div>
+        </div>
+
+      </div>
+
+      <div style="margin-top: 40px;">
+        <p class="section-label">Education</p>
+        <div class="exp-list">
+          <div class="exp-item">
+            <div>
+              <div class="exp-role">MSc Biomedical Engineering</div>
+              <div class="exp-org">Graz University of Technology · Health Care Engineering</div>
+            </div>
+            <div class="exp-date">2015 – 2024</div>
+          </div>
+          <div class="exp-item">
+            <div>
+              <div class="exp-role">BSc Biomedical Engineering</div>
+              <div class="exp-org">Graz University of Technology</div>
+            </div>
+            <div class="exp-date">2009 – 2015</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Contact ── -->
+  <section id="contact">
+    <div class="container">
+      <p class="section-label">Contact</p>
+      <p style="color: var(--muted); margin-bottom: 24px; font-size: 0.95rem;">
+        Open to consulting engagements in AI regulation, MedTech compliance, and quality management.
+      </p>
+      <div class="contact-links">
+        <a class="contact-link" href="mailto:geraldfruhmann@mailbox.org">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0114.25 14H1.75A1.75 1.75 0 010 12.25v-8.5C0 2.784.784 2 1.75 2zM1.5 4.307v7.943c0 .138.112.25.25.25h12.5a.25.25 0 00.25-.25V4.307L8.682 8.97a1 1 0 01-1.364 0L1.5 4.307zM14.357 3.5H1.643L8 8.432 14.357 3.5z"/></svg>
+          geraldfruhmann@mailbox.org
+        </a>
+        <a class="contact-link" href="https://github.com/gerfru" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          github.com/gerfru
+        </a>
+        <a class="contact-link" href="https://github.com/gerfru/cv" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 010-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8z"/></svg>
+          Full CV
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>Gerald Fruhmann · Graz, Austria</p>
+      <p>"What you wish to ignite in others must burn within yourself first."</p>
+    </div>
+  </footer>
+
+</body>
+</html>
