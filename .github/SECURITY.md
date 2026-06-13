@@ -4,14 +4,21 @@
 
 This is a static website with no server-side code, databases, or user authentication. The attack surface is limited to the HTML, CSS, and client-side JavaScript served via GitHub Pages.
 
-## Reporting a vulnerability
+## Security-Scanning im SDLC
 
-If you discover a security issue (e.g. XSS via injected content, dependency vulnerability, or misconfiguration), please report it responsibly:
+| Schicht | Tool | Trigger |
+|---------|------|---------|
+| Secret-Scan | gitleaks | CI |
+
+## Sicherheitslücken melden
+
+Schwachstellen bitte **nicht** als öffentliches GitHub Issue melden.
+Stattdessen: GitHub → Security → "Report a vulnerability" (Private Disclosure) oder direkt:
 
 - Email: gerald@frhmnn.eu
 - Subject: `[SECURITY] gerfru.github.io`
 
-I will acknowledge receipt within 48 hours and aim to resolve confirmed issues promptly.
+Meldungen werden innerhalb von 48 Stunden bestätigt.
 
 ## Out of scope
 
