@@ -1,0 +1,64 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  check-pr-size:
+    name: PR Size Check
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        with:
+          fetch-depth: 0
+      - name: Fail if PR adds more than 400 lines
+        env:
+          BASE_REF: ${{ github.base_ref }}
+        run: |
+          ADDED=$(git diff "origin/$BASE_REF"...HEAD \
+            -- . ':(exclude)*.md' ':(exclude)LICENSE' ':(exclude)*.jpg' ':(exclude)*.png' \
+            | grep -cE '^\+[^+]' || echo 0)
+          echo "Lines added (excl. images/docs): $ADDED"
+          if [ "$ADDED" -gt 400 ]; then
+            echo "::error::PR zu groß (${ADDED} Zeilen hinzugefügt, Limit: 400) — bitte aufteilen."
+            exit 1
+          fi
+
+  security:
+    name: Security
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+    steps:
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        with:
+          fetch-depth: 0
+      - name: gitleaks
+        uses: gitleaks/gitleaks-action@e0c47f4f8be36e29cdc102c57e68cb5cbf0e8d1e # v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  ci-ok:
+    name: CI OK (All Green Gate)
+    runs-on: ubuntu-latest
+    if: always()
+    needs: [check-pr-size, security]
+    steps:
+      - name: All checks passed
+        run: |
+          if echo '${{ toJSON(needs.*.result) }}' | grep -qE '"failure"|"cancelled"'; then
+            echo "One or more required jobs failed or were cancelled."
+            exit 1
+          fi
+          echo "All CI jobs passed."
